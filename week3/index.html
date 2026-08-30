@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แอปพลิเคชันบันทึกรายรับ-รายจ่าย</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2> ระบบบันทึกรายรับ-รายจ่าย</h2>
+
+        <!-- โจทย์ที่ 4: สรุปรายงานการเงิน -->
+        <div class="summary-card">
+            <div>รายรับรวม: <span id="totalIncome" class="income">฿0.0</span></div>
+            <div>รายจ่ายรวม: <span id="totalExpense" class="expense">฿0.0</span></div>
+            <div>ยอดเงินคงเหลือ: <span id="netBalance">฿0.0</span></div>
+        </div>
+
+        <!-- ฟอร์มเพิ่มรายการ -->
+        <form id="transactionForm">
+            <input type="text" id="text" placeholder="ชื่อรายการ (เช่น ค่าข้าว, เงินเดือน)" required>
+            <input type="number" id="amount" placeholder="จำนวนเงิน (บาท)" required>
+            
+            <select id="type" required>
+                <option value="income">รายรับ</option>
+                <option value="expense">รายจ่าย</option>
+            </select>
+
+            <!-- โจทย์ที่ 1: เพิ่ม <select> หมวดหมู่ธุรกรรม -->
+            <select id="category" required>
+                <option value="" disabled selected>-- เลือกหมวดหมู่ --</option>
+                <option value="อาหาร"> อาหาร</option>
+                <option value="เดินทาง"> เดินทาง</option>
+                <option value="ช้อปปิ้ง"> ช้อปปิ้ง</option>
+                <option value="เงินเดือน"> เงินเดือน</option>
+                <option value="อื่นๆ"> อื่นๆ</option>
+            </select>
+
+            <button type="submit">เพิ่มรายการ</button>
+        </form>
+
+        <!-- โจทย์ที่ 2: ช่องค้นหา (Search Input) แบบ Real-time -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 ค้นหาชื่อรายการ...">
+        </div>
+
+        <h3>ประวัติรายการ</h3>
+        
+        <!-- โจทย์ที่ 3: แสดงประวัติรายการทั้งหมด (ในรูปแบบ <ul> หรือ ตาราง) -->
+        <ul id="transactionList" class="list">
+            <!-- รายการจะถูกเพิ่มเข้ามาทาง JavaScript -->
+        </ul>
+
+        <!-- โจทย์ที่ 5: ปุ่มล้างประวัติทั้งหมด -->
+        <button id="clearBtn" class="clear-btn">ล้างข้อมูลทั้งหมด</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

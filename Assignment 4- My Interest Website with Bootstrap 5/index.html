@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เส้นทางกาลเวลา — เว็บไซต์ส่วนตัวว่าด้วยประวัติศาสตร์โลก</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=Noto+Serif+Thai:wght@600;700&family=Noto+Sans+Thai:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md site-navbar">
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">เส้นทางกาลเวลา</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="เปิดเมนู">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">หน้าแรก</a></li>
+          <li class="nav-item"><a class="nav-link" href="eras.html">ยุคสมัยประวัติศาสตร์</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">เหตุการณ์สำคัญ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>บันทึกเรื่องราวของมนุษยชาติ ตั้งแต่ยุคแรกจนถึงโลกสมัยใหม่</h1>
+      <p class="lead mt-3">พื้นที่ส่วนตัวที่รวบรวมสิ่งที่ผมสนใจเกี่ยวกับประวัติศาสตร์โลก ตั้งแต่อารยธรรมโบราณ การเปลี่ยนผ่านของยุคสมัย ไปจนถึงเหตุการณ์ที่เปลี่ยนทิศทางของโลก</p>
+      <a href="eras.html" class="btn btn-gold mt-3">เริ่มสำรวจยุคสมัยต่าง ๆ</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="section-kicker">แนะนำ</p>
+        <h2 class="section-title">ยุคสมัยที่น่าสนใจ</h2>
+        <hr class="rule">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card-era">
+              <span class="era-range">3500 ปีก่อนคริสตกาล – ค.ศ. 500</span>
+              <h3>อารยธรรมโบราณ</h3>
+              <p>จุดกำเนิดของการเขียน กฎหมาย และเมืองแห่งแรก ๆ ในเมโสโปเตเมีย อียิปต์ กรีก และโรม</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-era">
+              <span class="era-range">ค.ศ. 1400 – 1600</span>
+              <h3>ยุคฟื้นฟูศิลปวิทยา</h3>
+              <p>ช่วงเวลาที่ศิลปะ วิทยาศาสตร์ และความคิดแบบมนุษยนิยมเบ่งบานขึ้นในยุโรป</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-era">
+              <span class="era-range">ค.ศ. 1760 – 1840</span>
+              <h3>การปฏิวัติอุตสาหกรรม</h3>
+              <p>จุดเปลี่ยนที่เครื่องจักรเข้ามาแทนที่แรงงานมือ และเปลี่ยนวิถีชีวิตของผู้คนไปตลอดกาล</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pt-0">
+      <div class="container">
+        <p class="section-kicker">ทำไมถึงสนใจ</p>
+        <h2 class="section-title">เรื่องเก่าที่ยังพูดกับปัจจุบัน</h2>
+        <hr class="rule">
+        <p style="max-width: 62ch;">ประวัติศาสตร์ไม่ใช่แค่รายชื่อเหตุการณ์กับปี พ.ศ. ที่ต้องจำ แต่เป็นเรื่องราวของการตัดสินใจ ความขัดแย้ง และความคิดสร้างสรรค์ของคนรุ่นก่อน ที่ยังส่งผลถึงวิธีที่โลกทุกวันนี้ทำงานอยู่ เว็บไซต์นี้เป็นที่รวบรวมสิ่งที่ผมอ่านและสรุปไว้ แบ่งเป็นสองส่วนหลัก คือภาพรวมของแต่ละยุคสมัย และเหตุการณ์เฉพาะที่ผมคิดว่าสำคัญเป็นพิเศษ</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <span>เส้นทางกาลเวลา — เว็บไซต์ส่วนตัว</span>
+      <span>จัดทำเพื่อประกอบ Assignment 4: My Interest Website with Bootstrap 5</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

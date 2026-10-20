@@ -1,0 +1,33 @@
+$kind: http-request
+url: "{{base_url}}/posts"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"title\": \"CE API Lab\",\r
+
+    \  \"body\": \"Created from Postman\",\r
+
+    \  \"userId\": {{user_id}}\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 201", () => {
+        pm.response.to.have.status(201);
+      });
+      pm.test("Created response matches request", () => {
+        const data = pm.response.json();
+        const sent = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));
+        pm.expect(data.title).to.eql(sent.title);
+        pm.expect(data.body).to.eql(sent.body);
+        pm.expect(data.userId).to.eql(sent.userId);
+        pm.expect(data.id).to.be.a("number");
+      });
+      if (pm.response.code === 201) {
+        pm.collectionVariables.set("created_post_id", pm.response.json().id);
+      }
+    language: text/javascript
+order: 3000

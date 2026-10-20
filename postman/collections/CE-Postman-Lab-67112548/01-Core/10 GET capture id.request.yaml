@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{base_url}}/posts/1"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status is 200\", () => {\r
+
+      \  pm.response.to.have.status(200);\r
+
+      });\r
+
+      pm.test(\"Capture an existing post id\", () => {\r
+
+      \  const data = pm.response.json();\r
+
+      \  pm.expect(data.id).to.eql(1);\r
+
+      \  pm.collectionVariables.set(\"existing_post_id\", data.id);\r
+
+      });"
+    language: text/javascript
+order: 10000

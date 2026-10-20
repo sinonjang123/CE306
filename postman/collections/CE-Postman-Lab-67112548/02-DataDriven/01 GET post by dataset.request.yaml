@@ -1,0 +1,59 @@
+$kind: http-request
+url: "{{base_url}}/posts/{{post_id}}"
+method: GET
+scripts:
+  - type: beforeRequest
+    code: "const cases = [\r
+
+      \    { post_id: 1, expected_status: 200 },\r
+
+      \    { post_id: 2, expected_status: 200 },\r
+
+      \    { post_id: 99999, expected_status: 404 }\r
+
+      ];\r
+
+      \r
+
+      const index = pm.info.iteration;\r
+
+      const current = cases[index];\r
+
+      \r
+
+      pm.variables.set(\"post_id\", current.post_id);\r
+
+      pm.variables.set(\"expected_status\", current.expected_status);\r
+
+      \r
+
+      console.log(\"Iteration:\", index + 1);\r
+
+      console.log(\"Post ID:\", current.post_id);"
+    language: text/javascript
+  - type: afterResponse
+    code: "const expected = Number(pm.variables.get(\"expected_status\"));\r
+
+      const id = Number(pm.variables.get(\"post_id\"));\r
+
+      \r
+
+      pm.test(\"Status matches dataset\", () => {\r
+
+      \    pm.expect(pm.response.code).to.eql(expected);\r
+
+      });\r
+
+      \r
+
+      if (expected === 200) {\r
+
+      \    pm.test(\"Response id matches dataset\", () => {\r
+
+      \        pm.expect(pm.response.json().id).to.eql(id);\r
+
+      \    });\r
+
+      }"
+    language: text/javascript
+order: 1000

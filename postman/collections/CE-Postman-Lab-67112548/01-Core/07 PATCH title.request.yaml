@@ -1,0 +1,29 @@
+$kind: http-request
+url: "{{base_url}}/posts/1"
+method: PATCH
+body:
+  type: json
+  content: '{ "title": "Patched title" }'
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status is 200\", () => {\r
+
+      \  pm.response.to.have.status(200);\r
+
+      });\r
+
+      pm.test(\"Title changed and remaining fields exist\", () => {\r
+
+      \  const data = pm.response.json();\r
+
+      \  pm.expect(data.id).to.eql(1);\r
+
+      \  pm.expect(data.title).to.eql(\"Patched title\");\r
+
+      \  pm.expect(data.body).to.be.a(\"string\");\r
+
+      \  pm.expect(data.userId).to.be.a(\"number\");\r
+
+      });"
+    language: text/javascript
+order: 7000

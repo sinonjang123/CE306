@@ -1,0 +1,24 @@
+$kind: http-request
+url: "{{base_url}}/posts/{{existing_post_id}}/comments"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status is 200\", () => {\r
+
+      \  pm.response.to.have.status(200);\r
+
+      });\r
+
+      pm.test(\"Comments belong to captured post\", () => {\r
+
+      \  const data = pm.response.json();\r
+
+      \  const id = Number(pm.collectionVariables.get(\"existing_post_id\"));\r
+
+      \  pm.expect(data).to.be.an(\"array\").that.is.not.empty;\r
+
+      \  data.forEach(comment => pm.expect(comment.postId).to.eql(id));\r
+
+      });"
+    language: text/javascript
+order: 11000

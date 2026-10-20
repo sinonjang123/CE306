@@ -1,0 +1,30 @@
+$kind: http-request
+url: https://jsonplaceholder.typicode.com/posts/2
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \  \"id\": 2,\r
+
+    \  \"title\": \"นายกฤษณะพงษ์ มณีวงค์\",\r
+
+    \  \"body\": \"My assignment update\",\r
+
+    \  \"userId\": 1\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Updated post matches my body", function () {
+          var jsonData = pm.response.json();
+          pm.expect(jsonData.title).to.eql("นายกฤษณะพงษ์ มณีวงค์");
+          pm.expect(jsonData.body).to.eql("My assignment update");
+      });
+    language: text/javascript
+order: 1000

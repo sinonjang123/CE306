@@ -1,0 +1,33 @@
+$kind: http-request
+url: "{{base_url}}/posts/1"
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \  \"id\": 1,\r
+
+    \  \"title\": \"Updated title\",\r
+
+    \  \"body\": \"Updated body\",\r
+
+    \  \"userId\": 1\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status is 200\", () => {\r
+
+      \  pm.response.to.have.status(200);\r
+
+      });\r
+
+      pm.test(\"PUT response matches complete body\", () => {\r
+
+      \  const sent = JSON.parse(pm.request.body.raw);\r
+
+      \  pm.expect(pm.response.json()).to.deep.eql(sent);\r
+
+      });"
+    language: text/javascript
+order: 6000

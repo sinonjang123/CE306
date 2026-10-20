@@ -1,0 +1,18 @@
+$kind: http-request
+url: https://jsonplaceholder.typicode.com/posts/2
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status is 200\", () => {\r
+
+      \  pm.response.to.have.status(200);\r
+
+      });\r
+
+      pm.test(\"Post 2 still exists\", () => {\r
+
+      \  pm.expect(pm.response.json().id).to.eql(2);\r
+
+      });"
+    language: text/javascript
+order: 3000

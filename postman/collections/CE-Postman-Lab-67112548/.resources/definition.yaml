@@ -1,0 +1,7 @@
+$kind: collection
+variables:
+  post_id: ""
+  "existing_post_id ": ""
+  created_post_id |: ""
+  created_post_id: ""
+  existing_post_id: ""

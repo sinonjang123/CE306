@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{base_url}}/posts/1"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Original post still exists after simulated DELETE\", () => {\r
+
+      \  pm.response.to.have.status(200);\r
+
+      \  pm.expect(pm.response.json().id).to.eql(1);\r
+
+      });"
+    language: text/javascript
+order: 9000

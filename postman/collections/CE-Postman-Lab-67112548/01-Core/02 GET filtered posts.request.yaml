@@ -1,0 +1,26 @@
+$kind: http-request
+url: "{{base_url}}/posts?userId={{user_id}}"
+method: GET
+queryParams:
+  userId: "{{user_id}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status is 200\", () => {\r
+
+      \  pm.response.to.have.status(200);\r
+
+      });\r
+
+      pm.test(\"Every post belongs to requested user\", () => {\r
+
+      \  const data = pm.response.json();\r
+
+      \  const uid = Number(pm.variables.get(\"user_id\"));\r
+
+      \  pm.expect(data).to.be.an(\"array\").that.is.not.empty;\r
+
+      \  data.forEach(post => pm.expect(post.userId).to.eql(uid));\r
+
+      });"
+    language: text/javascript
+order: 2000
